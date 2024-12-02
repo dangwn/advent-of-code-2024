@@ -23,7 +23,7 @@ func readLines(filePath string) ([]string, error) {
 	return out, scanner.Err()
 }
 
-func Read(filePath string) ([][]string, error) {
+func ReadArrays(filePath string) ([][]string, error) {
 	var output [][]string
 
 	lines, err := readLines(filePath)

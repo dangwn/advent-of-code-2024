@@ -1,4 +1,4 @@
-package dayone
+package day01
 
 import (
 	"log"
@@ -8,14 +8,14 @@ import (
 )
 
 func getArrays(inputFile string) ([]int, []int) {
-	rawInput, err := s.Read(inputFile)
+	rawInput, err := s.ReadArrays(inputFile)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	var arr1, arr2 []int
 	for _, input := range rawInput {
-		intArr, err := convArr(input)
+		intArr, err := s.StringArrToInt(input)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -34,7 +34,7 @@ func Part1(inputFile string) int {
 
 	var sum int = 0
 	for i := range arr1 {
-		sum += absDiff(arr1[i], arr2[i])
+		sum += s.Abs(arr1[i] - arr2[i])
 	}
 
 	return sum
@@ -43,7 +43,7 @@ func Part1(inputFile string) int {
 func Part2(inputFile string) int {
 	arr1, arr2 := getArrays(inputFile)
 
-	counter := makeCounter(arr2)
+	counter := s.MakeCounter(arr2)
 	var sum int = 0
 
 	for _, num := range arr1 {
