@@ -12,3 +12,11 @@ func Abs[T Number](val T) T {
 	}
 	return val
 }
+
+func Sum[T Number](vals []T) T {
+	var total T = 0
+	for _, v := range vals {
+		total += v
+	}
+	return total
+}

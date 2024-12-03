@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func readLines(filePath string) ([]string, error) {
+func ReadLines(filePath string) ([]string, error) {
 	var out []string
 
 	file, err := os.Open(filePath)
@@ -26,7 +26,7 @@ func readLines(filePath string) ([]string, error) {
 func ReadArrays(filePath string) ([][]string, error) {
 	var output [][]string
 
-	lines, err := readLines(filePath)
+	lines, err := ReadLines(filePath)
 	if err != nil {
 		return output, err
 	}
