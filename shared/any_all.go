@@ -34,3 +34,12 @@ func FirstInd[T any](data []T, cond func(T) bool) int {
 	}
 	return -1
 }
+
+func AllTrue(cond []bool) bool {
+	for _, c := range cond {
+		if !c {
+			return false
+		}
+	}
+	return true
+}
