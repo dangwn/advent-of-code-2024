@@ -1,11 +1,11 @@
 package day04
 
-import (
-	s "github.com/dangwn/advent-of-code-2024/shared"
-)
-
 const PATTERN string = "XMAS"
 const REVERSE_PATTERN string = "SAMX"
+
+func checkMas(m, a, s rune) bool {
+	return m == 'M' && a == 'A' && s == 'S'
+}
 
 func searchHorizontal(grid [][]rune, width, i, j int) int {
 	var count int = 0
@@ -18,11 +18,30 @@ func searchHorizontal(grid [][]rune, width, i, j int) int {
 	return count
 }
 
-func searchDiagonal(grid [][]rune, width, height, i, j int) int {
-	var count = 0
-	if s.AllTrue([]bool{
-		i > 2,
-		j > 2,
-		grid[i-1]
-	})
+func searchVertical(grid [][]rune, height, i, j int) int {
+	var count int = 0
+	if i > 2 && checkMas(grid[i-1][j], grid[i-2][j], grid[i-3][j]) {
+		count++
+	}
+	if i < height-3 && checkMas(grid[i+1][j], grid[i+2][j], grid[i+3][j]) {
+		count++
+	}
+	return count
+}
+
+func searchDiagonals(grid [][]rune, width, height, i, j int) int {
+	var count int = 0
+	if i > 2 && j > 2 && checkMas(grid[i-1][j-1], grid[i-2][j-2], grid[i-3][j-3]) {
+		count++
+	}
+	if i < height-3 && j < width-3 && checkMas(grid[i+1][j+1], grid[i+2][j+2], grid[i+3][j+3]) {
+		count++
+	}
+	if i > 2 && j < width-3 && checkMas(grid[i-1][j+1], grid[i-2][j+2], grid[i-3][j+3]) {
+		count++
+	}
+	if i < height-3 && j > 2 && checkMas(grid[i+1][j-1], grid[i+2][j-2], grid[i+3][j-3]) {
+		count++
+	}
+	return count
 }

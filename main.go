@@ -9,6 +9,6 @@ import (
 const inputFile = "day-04/input.txt"
 
 func main() {
-	out := d.Part1(inputFile)
+	out := d.Part2(inputFile)
 	fmt.Println(out)
 }
